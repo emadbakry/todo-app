@@ -4,6 +4,7 @@ import bellSound from "../bell_ring.mp3";
 import kidsYeahSound from "../kids_yeah.mp3";
 import icon_sun from "../images/icon-sun.svg";
 import icon_moon from "../images/icon-moon.svg";
+import icon_plus_white from "../images/plus_white.svg";
 import Data from "../components/Data";
 export default function MainContent(p) {
   // check local storage
@@ -55,7 +56,12 @@ export default function MainContent(p) {
   function addItem(e) {
     // is it ENTER key?
     let text = document.getElementById("inp-create").value;
-    if (e.key === "Enter" && text !== "" && text !== " ") {
+    if (
+      (e.key === "Enter" ||
+        e.currentTarget.classList.contains("addItem-btn")) &&
+      text !== "" &&
+      text !== " "
+    ) {
       e.preventDefault();
       setALL_DATA((prev) => [
         ...prev,
@@ -156,8 +162,13 @@ export default function MainContent(p) {
               />
             </div>
           </header>
-          <div className="create mb-6 flex items-center bg-white group-[.dark]:bg-clr_blue_2 rounded-lg pl-4">
-            <span className="checkbox shrink-0 inline-block rounded-full w-6 h-6 border border-clr_graish_blue_3 mr-4 cursor-pointer"></span>
+          <div className="create mb-6 flex items-center bg-white group-[.dark]:bg-clr_blue_2 rounded-lg pl-6">
+            <span
+              onClick={addItem}
+              className="checkbox addItem-btn flex items-center justify-center shrink-0 rounded-full w-6 h-6 border border-clr_graish_blue_3 mr-4 cursor-pointer"
+            >
+              <img src={icon_plus_white} alt="moon" />
+            </span>
             <input
               onKeyDown={addItem}
               id="inp-create"

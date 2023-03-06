@@ -24,7 +24,8 @@ body {
 }
 
 /* bg grad for check box */
-.results .item.completed .checkbox {
+.results .item.completed .checkbox,
+.addItem-btn {
   background-image: linear-gradient(
     135deg,
     hsl(192, 100%, 67%),
