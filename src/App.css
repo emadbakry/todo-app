@@ -1,38 +1,51 @@
-.App {
-  text-align: center;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-image: url(./images/bg-desktop-light.jpg);
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: 100% 270px;
+  /* background-color: #eee; */
+  font-family: "Josefin Sans", sans-serif;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.dark body {
+  background-image: url(./images/bg-desktop-dark.jpg);
+  background-color: hsl(235, 21%, 11%);
+}
+@media only screen and (max-width: 492px) {
+  body {
+    background-image: url(./images/bg-mobile-light.jpg);
+  }
+  .dark body {
+    background-image: url(./images/bg-mobile-dark.jpg);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* bg grad for check box */
+.results .item.completed .checkbox {
+  background-image: linear-gradient(
+    135deg,
+    hsl(192, 100%, 67%),
+    hsl(280, 87%, 65%)
+  );
+}
+
+/* filtering results */
+.item {
+  display: none;
+}
+.show-active .item.active {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+.show-completed .item.completed {
+  display: flex;
+}
+.show-all .item {
+  display: flex !important;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.no-result.active {
+  display: block !important;
 }

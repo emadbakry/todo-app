@@ -4,4 +4,4 @@
 
 ## Welcome! 👋
 
-[Demo](./)
+[Demo link](https://emadbakry.github.io/todo-app)

@@ -1,24 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import Main from "./components/Main";
+import React from "react";
 
 function App() {
+  // Dark mode
+  localStorage.theme === "dark" ||
+  (!("theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ? document.documentElement.classList.add("dark", "group")
+    : document.documentElement.classList.remove("dark");
+  function toggleDarkMode() {
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      // Whenever the user explicitly chooses light mode
+      localStorage.theme = "light";
+    } else {
+      document.documentElement.classList.add("dark", "group");
+      // Whenever the user explicitly chooses dark mode
+      localStorage.theme = "dark";
+    }
+  }
+  // data
+  // const [data, setData] = React.useState();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Main toggleDark={toggleDarkMode} />
+    </>
   );
 }
 
